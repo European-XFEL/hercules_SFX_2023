@@ -1,0 +1,42 @@
+[data]
+proposal = 700000
+runs = [30]
+frames_range = {end = -1}
+vds_names = ["indexed_p700000_r0030_vds.h5"]
+
+[crystfel]
+# Available versions: '0.8.0', '0.9.1', '0.10.2', 'cfel_dev', '0.10.2_visa'
+version = '0.10.2_visa'
+
+[geom]
+file_path = "agipd_p700000_r0030_v01.geom"
+
+[slurm]
+# Available partitions: 'all', 'upex', 'exfel', 'local'
+partition = 'local'
+
+[proc_coarse]
+resolution = 4.0
+peak_method = "peakfinder8"
+peak_threshold = 800
+peak_snr = 5
+peak_min_px = 1
+peak_max_px = 2
+peaks_hdf5_path = "entry_1/result_1"
+index_method = "xgandalf"
+n_cores = 1
+local_bg_radius = 3
+integration_radii = "2,3,5"
+max_res = 1200
+min_peaks = 10
+extra_options = "--no-non-hits-in-stream"
+
+[unit_cell]
+file = "hewl.cell"
+run_refine = false
+
+[merging]
+point_group = "422"
+scaling_model = "unity"
+scaling_iterations = 1
+max_adu = 100000

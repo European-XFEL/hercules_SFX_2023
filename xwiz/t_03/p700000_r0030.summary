@@ -1,0 +1,65 @@
+SUMMARY OF XWIZ WORKFLOW
+
+Session time-stamp: 2023-03-20T12:37:16.604743
+Operation mode:
+  automatic (batch run from configuration file)
+Input type:
+  virtual data set referring to EuXFEL-corrected HDF5
+
+BASE CONFIGURATION USED
+ Group: data
+    proposal       : 700000
+    runs           : [30]
+    Group: frames_range
+       end            : -1
+ Group: crystfel
+    version        : 0.10.2
+ Group: geom
+    file_path      : agipd_p700000_r0030_v01.geom
+ Group: slurm
+    partition      : exfel
+    duration_all   : 1:00:00
+    n_nodes_all    : 60
+ Group: proc_coarse
+    resolution     : 1.6
+    peak_method    : peakfinder8
+    peak_threshold : 800
+    peak_snr       : 5
+    peak_min_px    : 1
+    peak_max_px    : 2
+    peaks_hdf5_path: entry_1/result_1
+    index_method   : xgandalf
+    n_cores        : -1
+    local_bg_radius: 3
+    integration_radii: 2,3,5
+    max_res        : 1600
+    min_peaks      : 20
+    extra_options  : --no-non-hits-in-stream
+ Group: unit_cell
+    file           : hewl.cell
+    run_refine     : False
+ Group: merging
+    point_group    : 422
+    scaling_model  : unity
+    scaling_iterations: 1
+    max_adu        : 100000
+
+Step #   d_lim   source      N(crystals)    N(frames)    Indexing rate [%%]
+  1        1.6   indexamajig     70130      639616         10.96
+
+Overall frame rates:
+              all_data
+N_frames        639616
+N_hits          101041
+N_indexed        70130
+hit_rate       15.797%
+index_rate     10.964%
+
+Crystallographic FOMs:
+                           all_data          
+                        overall   outer shell
+Completeness              100.0         100.0
+Signal-over-noise         4.468          0.91
+CC_1/2                   0.9059       0.08861
+CC*                       0.975        0.4035
+R_split                   25.67         74.45
